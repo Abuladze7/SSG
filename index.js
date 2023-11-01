@@ -564,16 +564,16 @@ app.use(async (req, res, next) => {
   return next();
 });
 
-const googlePubSubOptions = {
-  projectId: process.env.GOOGLE_PUB_SUB_PROJECT_ID,
-  credentials: {
-    client_email: process.env.GOOGLE_PUB_SUB_CLIENT_EMAIL,
-    private_key: (
-      process.env.GOOGLE_PUB_SUB_PRIVATE_KEY_PART_ONE +
-      process.env.GOOGLE_PUB_SUB_PRIVATE_KEY_PART_TWO
-    ).replace(new RegExp("\\\\n", "g"), "\n"),
-  },
-};
+// const googlePubSubOptions = {
+//   projectId: process.env.GOOGLE_PUB_SUB_PROJECT_ID,
+//   credentials: {
+//     client_email: process.env.GOOGLE_PUB_SUB_CLIENT_EMAIL,
+//     private_key: (
+//       process.env.GOOGLE_PUB_SUB_PRIVATE_KEY_PART_ONE +
+//       process.env.GOOGLE_PUB_SUB_PRIVATE_KEY_PART_TWO
+//     ).replace(new RegExp("\\\\n", "g"), "\n"),
+//   },
+// };
 
 const pubsub =
   process.env.NODE_ENV === "production"
@@ -815,7 +815,7 @@ app.get("/", (req, res) => {
 // Connect to MongoDB with Mongoose
 mongoose
   .connect(
-    `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@glowlabs-qo7rk.mongodb.net/test?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@cluster0.xbui9fx.mongodb.net/test?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
   )
   .then(() => {
